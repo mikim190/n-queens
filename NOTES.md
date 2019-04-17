@@ -37,12 +37,15 @@
     - n-arrays (each representing a row)
     - n-length arrays (each index representing a square in a board column)
 
-  board = [
+  board = {
+    attributes: {
     [0, 1, 2, 3], // row 0
     [0, 1, 2, 3], // row 1
     [0, 1, 2, 3], // row 2
     [0, 1, 2, 3]  // row 3
-  ];
+    },
+    
+  };
 
   Every value at index 0 === column 0
   Every value at index 1 === column 1
@@ -56,4 +59,8 @@
       Qusetion: Will n-queen solutions, where n is an even number, ever have a queen placed in the corner?
         > I don't think so. I believe that only odd-numbered n for n-queens can have a queen placed in the corner.
         > However, this will have to be confirmed.
-        
+
+  ## Board Layout
+    var board = new Board({n:5})
+
+    board.attributes = {} // numerical indexed 
