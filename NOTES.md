@@ -1,4 +1,4 @@
-#Notes
+# Notes -  This sprint makes me want to play chess.
 
 ## Time complexity
   Worst case time complexty is factorial because searching through every possible placement of a queen or rook
@@ -21,4 +21,31 @@
     Seventh in one possible square for each combination of first and second placements.
   
   ...On and on for every new piece added to the board with an increasing n-size of board requiring n-number of queens or rooks.
+
+## Considerations
+  All board sizes may not have a n-queens solution:
+  All board sizes may not have a n-rooks solution:
+
+  Input will be a number (n);
+
+  Problem is to determine whether a n-number of rooks/ queens can fit on a 'n by n' square chess board without any attack conflicts
+    - n-rooks will never have to consider diagonal conflicts, only diagonal and vertical conflicts
+    - n-queens has to consider horizontal, vertical and diagonal conflicts.
+
+  Ignoring optomization, this is a proportional matrix algorithm issue.
+  I'm going to be working with a data structure that is a nested array of:
+    - n-arrays (each representing a row)
+    - n-length arrays (each index representing a square in a board column)
+    
+  board = [
+    [0, 1, 2, 3], // row 0
+    [0, 1, 2, 3], // row 1
+    [0, 1, 2, 3], // row 2
+    [0, 1, 2, 3]  // row 3
+  ];
+
+  Every value at index 0 === column 0
+  Every value at index 1 === column 1
+  Every value at index 2 === column 2
+  Every value at index 3 === column 3
   
