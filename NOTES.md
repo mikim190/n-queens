@@ -36,7 +36,7 @@
   I'm going to be working with a data structure that is a nested array of:
     - n-arrays (each representing a row)
     - n-length arrays (each index representing a square in a board column)
-    
+
   board = [
     [0, 1, 2, 3], // row 0
     [0, 1, 2, 3], // row 1
@@ -49,3 +49,11 @@
   Every value at index 2 === column 2
   Every value at index 3 === column 3
   
+  ## Considerations
+    n-queens(4) solution is extremely similar to n-queens(5).
+      > the main differenect is that the 5th queen appears in a corner located in the new row-column added
+
+      Qusetion: Will n-queen solutions, where n is an even number, ever have a queen placed in the corner?
+        > I don't think so. I believe that only odd-numbered n for n-queens can have a queen placed in the corner.
+        > However, this will have to be confirmed.
+        
