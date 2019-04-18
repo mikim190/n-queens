@@ -79,11 +79,10 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function (rowIndex) {
-      // if 
       //bind a variable to the invocation of this.rows
-      let rowsArray = this.rows();
+      let matrix = this.rows();
       //isolate target row using provided rowIndex
-      var targetRow = rowsArray[rowIndex];
+      var targetRow = matrix[rowIndex];
       let counter = 0;
       //iterate over target row and detect the conflicts
       for (let i = 0; i < targetRow.length; i++) {
@@ -100,10 +99,10 @@
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function () {
       //bind a variable to the invocation of this.rows
-      var boardRowsArray = this.rows();
-      for (let i = 0; i < boardRowsArray.length; i++) {
+      var matrix = this.rows();
+      for (let i = 0; i < matrix.length; i++) {
         var counter = 0;
-        var currentRow = boardRowsArray[i];
+        var currentRow = matrix[i];
         for (let j = 0; j < currentRow.length; j++) {
           if (currentRow[j] === 1) {
             counter++;
@@ -114,17 +113,6 @@
         }
       }
       return false;
-
-
-      // //iterate over each row, call hasRowConflict with each index
-      // for (var i = 0; i < board.length; i++) {
-      //   if (this.hasRowConflictAt(i)) {
-      //     return true;
-      //   }
-      //   return false;
-      // }
-
-      // return false; // fixme
     },
 
 
@@ -134,11 +122,30 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function (colIndex) {
-      return false; // fixme
+      let matrix = this.rows();
+      //isolate target row using provided rowIndex
+      let counter = 0;
+      for (let i = 0; i < matrix.length; i++) {
+        if (matrix[i][colIndex] === 1) {
+          counter++;
+        }
+      }
+      if (counter > 1) {
+        return true;
+      }
+      return false;
+
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function () {
+      let matrix = this.rows();
+      for (let i = 0; i < matrix.length; i++) {
+        if (this.hasColConflictAt(i)) {
+          return true;
+        }
+      }
+
       return false; // fixme
     },
 
