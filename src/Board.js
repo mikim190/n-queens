@@ -155,12 +155,45 @@
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
-    hasMajorDiagonalConflictAt: function (majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+    hasMajorDiagonalConflictAt: function (majorDiagonalColumnIndexAtFirstRow) { // j
+      let matrix = this.rows();
+      let counter = 0; // declare counter
+      let row;
+      let col;
+      if (majorDiagonalColumnIndexAtFirstRow >= 0) { // if (majorDiagonalColumnIndexAtFirstRow > 0) {
+        row = 0; // start at [0][input]
+        col = majorDiagonalColumnIndexAtFirstRow;
+      } else {
+        row = majorDiagonalColumnIndexAtFirstRow * (-1); //   // start at [input * (-1)][0];
+        col = 0; // }
+      }
+      const loops = matrix.length - (row + col);
+      for (let i = 0; i < loops; i++) { // loop for n - (row + column) times
+        if (matrix[row][col]) { // if start value [row + 1][col + 1] === 1
+          counter++;
+        }
+        row++;
+        col++;
+      }
+      if (counter > 1) {
+        return true;
+      }
+      return false;
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function () {
+      debugger;
+      let matrix = this.rows(); // declare matrix
+      for (let i = 0; i < matrix.length; i++) {  // for loop i - row
+        for (let j = 0; j < matrix.length; j++) { // for loop j - column
+          if (matrix[i][j]) { // if matrix[i][j] === truthy 
+            if (this.hasMajorDiagonalConflictAt(j - i)) {
+              return true;
+            }
+          }
+        }
+      }
       return false; // fixme
     },
 
