@@ -183,7 +183,6 @@
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function () {
-      debugger;
       let matrix = this.rows(); // declare matrix
       for (let i = 0; i < matrix.length; i++) {  // for loop i - row
         for (let j = 0; j < matrix.length; j++) { // for loop j - column
@@ -204,11 +203,35 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function (minorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      let matrix = this.rows();
+      let counter = 0;
+      let row = 0;
+      let col = minorDiagonalColumnIndexAtFirstRow;
+      for (let i = 0; i < matrix.length; i++) {
+        if (matrix[row][col]) {
+          counter++
+        }
+        row++;
+        col--;
+      }
+      if (counter > 1) {
+        return true;
+      }
+      return false;
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function () {
+      let matrix = this.rows();
+      for (let i = 0; i < matrix.length; i++) {  // for loop over rows
+        for (let j = 0; j < matrix.length; j++) { // for loop over columns
+          if (matrix[i][j]) {  // if matrix[row][col] === 1
+            if (this.hasMinorDiagonalConflictAt(i + j)) {
+              return true;
+            }
+          }
+        }
+      }
       return false; // fixme
     }
 
